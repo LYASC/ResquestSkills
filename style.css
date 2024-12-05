@@ -77,3 +77,43 @@ a {
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+  margin-top: 0;
+  padding: 5;
+}
+
+button:hover {
+  background-color: #ffffff;
+}
+
+/* Résultats */
+.results {
+  margin-top: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffff;
+}
+img.title {
+  width: 230px;
+  height: 150px;
+}
+.mascotte {
+  width: 50px;
+  height: 50px;
+}
+.mascotte1 {
+  width: 230px;
+  height: 150px;
+}
+a {
+  text-decoration: none;
+  margin: 10px;
+}
+
+.mascotte2 {
+  width: 50px;
+  height: 50px;
+  margin-top: 100px;
+}
+a.button1 {
+  margin-bottom: 20px;
+}
