@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Création de Groupes</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Création de Groupes</h1>
+      <p>Ajoutez les participants et leurs rôles :</p>
+
+      <!-- Formulaire d'ajout -->
+      <div class="form">
+        <input type="text" id="name" placeholder="Nom" />
+        <select id="role">
+          <option value="A">Écoute</option>
+          <option value="B">Communication</option>
+          <option value="C">Observation</option>
+          <option value="D">Prise de décision</option>
+          <option value="E">Créativité</option>
+        </select>
+        <button id="add-participant">Ajouter</button>
+      </div>
+
+      <!-- Liste des participants -->
+      <h2>Liste des Participants</h2>
+      <ul id="participant-list"></ul>
+
+      <!-- Bouton pour générer les groupes -->
+      <button id="generate-groups">Générer les Groupes</button>
+
+      <!-- Affichage des groupes -->
+      <h2>Groupes Générés</h2>
+      <div id="groups"></div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

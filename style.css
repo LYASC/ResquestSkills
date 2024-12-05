@@ -1,0 +1,79 @@
+/* Centrage vertical uniquement */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* Occupe toute la hauteur de l'écran */
+  background-color: #444443;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Conteneur principal des questions */
+#questions-container {
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto; /* Centrage horizontal via margin */
+  text-align: center;
+}
+
+/* Titre */
+h1 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 10px;
+  margin-top: 10;
+  font-family: "Quicksand", sans-serif;
+}
+
+/* Style pour chaque question */
+.question {
+  display: none;
+  margin-bottom: 20px;
+  padding: 20px;
+  /*border: 2px solid #4caf50;*/
+  /*border-radius: 10px;*/
+
+  text-align: left;
+}
+
+/* Affichage de la question active */
+.question.active {
+  display: block;
+  padding: 0;
+}
+
+/* Style pour les options */
+.question label {
+  padding-left: 10px;
+  padding-left: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  margin: 10px;
+  display: block;
+  margin-top: 10px;
+
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+p {
+  text-align: center;
+  margin: 30px;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+/* Style du bouton */
+button,
+a {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  color: #649ed6;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
