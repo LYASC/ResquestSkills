@@ -3,7 +3,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  height: 100vh; /* Occupe toute la hauteur de l'écran */
+  /*height: 100vh; /* Occupe toute la hauteur de l'écran */
   background-color: #444443;
   display: flex;
   justify-content: center;
@@ -93,7 +93,7 @@ button:hover {
   color: #ffff;
 }
 img.title {
-  width: 230px;
+  width: 250px;
   height: 150px;
 }
 .mascotte {
