@@ -1,9 +1,9 @@
-/* Centrage vertical uniquement */
+/* Centrage vertical et horizontal */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  /*height: 100vh; /* Occupe toute la hauteur de l'écran */
+
   background-color: #444443;
   display: flex;
   justify-content: center;
@@ -24,8 +24,13 @@ h1 {
   text-align: center;
   color: #fff;
   margin-bottom: 10px;
-  margin-top: 10;
   font-family: "Quicksand", sans-serif;
+  padding-top: 5px;
+}
+img.mascotte1 {
+  width: 250px;
+  height: 150px;
+  margin-top: 50px;
 }
 
 /* Style pour chaque question */
@@ -33,33 +38,43 @@ h1 {
   display: none;
   margin-bottom: 20px;
   padding: 20px;
-  /*border: 2px solid #4caf50;*/
-  /*border-radius: 10px;*/
-
   text-align: left;
 }
 
 /* Affichage de la question active */
 .question.active {
   display: block;
-  padding: 0;
+  padding: 20px;
+  padding-bottom: 0;
+  padding-top: 0;
+}
+
+img.title {
+  margin-bottom: 10px;
+}
+
+.contenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh; /* Occupe toute la hauteur de l'écran */
 }
 
 /* Style pour les options */
 .question label {
   padding-left: 10px;
-  padding-left: 10px;
   padding-top: 20px;
   padding-bottom: 20px;
-
   margin: 10px;
   display: block;
   margin-top: 10px;
-
   border-radius: 10px;
   background-color: #fff;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+/* Style du texte */
 p {
   text-align: center;
   margin: 30px;
@@ -70,19 +85,21 @@ p {
 /* Style du bouton */
 button,
 a {
-  padding: 10px 20px;
-  background-color: #ffffff;
-  color: #649ed6;
+  padding: 12px 20px; /* Plus grand padding pour améliorer la visibilité */
+  background-color: #fff;
+  color: #5bbac4;
   border: none;
-  border-radius: 5px;
+  border-radius: 60px;
   cursor: pointer;
   font-size: 16px;
-  margin-top: 0;
-  padding: 5;
+  display: inline-block; /* S'assurer qu'il se comporte comme un bouton */
+  text-align: center; /* Assure que le texte est centré */
+  width: 150px;
 }
 
+/* Effet au survol du bouton */
 button:hover {
-  background-color: #ffffff;
+  background-color: #f0f0f0;
 }
 
 /* Résultats */
@@ -91,29 +108,133 @@ button:hover {
   font-weight: bold;
   text-align: center;
   color: #ffff;
+  font-family: "Quicksand", sans-serif;
 }
+
 img.title {
   width: 250px;
   height: 150px;
+  margin-top: 70px;
 }
-.mascotte {
+
+.mascotte,
+.mascotte2 {
   width: 50px;
   height: 50px;
 }
+
 .mascotte1 {
   width: 230px;
   height: 150px;
 }
+
 a {
   text-decoration: none;
   margin: 10px;
 }
 
-.mascotte2 {
-  width: 50px;
-  height: 50px;
-  margin-top: 100px;
-}
 a.button1 {
   margin-bottom: 20px;
+}
+
+label {
+  font-size: 13px;
+}
+
+/* Media Queries pour rendre la page responsive */
+
+/* Pour les écrans plus petits que 768px (tablettes) */
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem; /* Taille du titre plus petite pour les tablettes */
+  }
+
+  .question label {
+    font-size: 14px; /* Réduit la taille de la police des labels */
+  }
+
+  button,
+  a {
+    font-size: 16px; /* Augmente légèrement la taille du texte dans les boutons */
+    padding: 10px 20px; /* Ajuste le padding pour une meilleure visibilité */
+  }
+
+  #questions-container {
+    width: 90%; /* Réduit la largeur du conteneur */
+  }
+
+  .results {
+    font-size: 1rem; /* Réduit la taille du texte des résultats */
+  }
+}
+
+/* Pour les écrans plus petits que 480px (smartphones) */
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.2rem; /* Taille du titre plus petite pour les téléphones */
+  }
+
+  .question label {
+    font-size: 13px; /* Taille encore plus petite pour les labels */
+  }
+
+  button,
+  a {
+    font-size: 14px; /* Taille du texte dans les boutons */
+    padding: 10px 15px; /* Réduit le padding pour un meilleur confort sur mobile */
+  }
+
+  #questions-container {
+    width: 98%; /* Le conteneur occupe plus de place sur les téléphones */
+  }
+
+  .results {
+    font-size: 0.9rem; /* Plus petit texte pour les résultats */
+  }
+}
+
+button {
+  visibility: visible; /* Garantit que le bouton est visible */
+}
+#next-button,
+#previous-button {
+  margin-bottom: 10px;
+}
+button:hover {
+  background-color: #f0f0f0;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 60px;
+  position: absolute; /* Permet de positionner les boutons où vous voulez */
+  top: 20px; /* Ajustez selon la hauteur désirée */
+  right: 20px; /* Aligne les boutons à droite */
+}
+
+.round-button {
+  padding: 5px; /* Plus grand padding pour améliorer la visibilité */
+  background-color: #fff;
+  color: #000000;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  display: inline-block; /* S'assurer qu'il se comporte comme un bouton */
+  text-align: center; /* Assure que le texte est centré */
+  width: 100px;
+}
+
+.round-button:hover {
+  background-color: #1d6fa5;
+  transform: scale(1.1);
+}
+
+.round-button:active {
+  transform: scale(0.95);
+}
+
+.round-button {
+  font-size: 10px;
 }

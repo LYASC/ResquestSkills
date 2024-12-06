@@ -3,39 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Création de Groupes</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Team generator</title>
+    <link rel="stylesheet" href="groupe.css" />
   </head>
   <body>
+    <div class="navigation-buttons">
+      <button id="home-button" class="round-button" onclick="goToHome()">
+        Home
+      </button>
+      <button id="team-button" class="round-button" onclick="goToTeamPage()">
+        Quiz
+      </button>
     <div class="container">
-      <h1>Création de Groupes</h1>
-      <p>Ajoutez les participants et leurs rôles :</p>
+      <img class="title" src="Mascottes/title.png" alt="nom du jeu" />
+      <h1>Team Creation</h1>
+      <p>Add participants and their roles:</p>
 
       <!-- Formulaire d'ajout -->
       <div class="form">
-        <input type="text" id="name" placeholder="Nom" />
+        <input type="text" id="name" placeholder="Name" />
         <select id="role">
-          <option value="A">Écoute</option>
+          <option value="A">Listening</option>
           <option value="B">Communication</option>
           <option value="C">Observation</option>
-          <option value="D">Prise de décision</option>
-          <option value="E">Créativité</option>
+          <option value="D">Decision-making</option>
+          <option value="E">Creativity</option>
         </select>
-        <button id="add-participant">Ajouter</button>
+        <button id="add-participant">Add</button>
       </div>
 
       <!-- Liste des participants -->
-      <h2>Liste des Participants</h2>
+      <p>List of participants</p>
       <ul id="participant-list"></ul>
 
       <!-- Bouton pour générer les groupes -->
-      <button id="generate-groups">Générer les Groupes</button>
+      <button id="generate-groups">Generate</button>
 
       <!-- Affichage des groupes -->
-      <h2>Groupes Générés</h2>
+      <p>Generated teams</p>
       <div id="groups"></div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="groupe.js"></script>
   </body>
 </html>

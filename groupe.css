@@ -1,0 +1,212 @@
+/* Centrage vertical et horizontal */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: #444443;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* Conteneur principal */
+.container {
+  text-align: center;
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.form input,
+.form select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  box-sizing: border-box; /* Ensures padding is included in the width */
+}
+
+.form button {
+  padding: 8px;
+}
+/* Titre principal */
+h1 {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 20px;
+  font-family: "Quicksand", sans-serif;
+}
+
+/* Paragraphe d'instructions */
+p {
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+/* Formulaire d'ajout de participant */
+.form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+/* Champ de texte et select */
+input[type="text"],
+select {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 200px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #5bbac4;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #5179a6;
+}
+
+/* Liste des participants */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+ul li {
+  margin: 10px 0;
+}
+
+/* Affichage des groupes */
+#groups {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#groups div {
+  background-color: #f8f8f8;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#groups h3 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Responsive Design */
+
+/* Pour les tablettes */
+@media screen and (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  input[type="text"],
+  select,
+  button {
+    width: 100%;
+    max-width: 150px;
+  }
+}
+
+/* Pour les smartphones */
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  .form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  input[type="text"],
+  select,
+  button {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  button {
+    font-size: 0.9rem;
+    width: 100%; /* Tous les boutons occuperont 100% de la largeur de leur conteneur */
+    max-width: 150px;
+  }
+
+  #groups h3 {
+    font-size: 1.2rem;
+  }
+
+  ul li {
+    font-size: 1rem;
+  }
+}
+img.title {
+  width: 250px;
+  height: 150px;
+  margin-top: 25px;
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 60px;
+}
+
+.round-button {
+  padding: 5px; /* Plus grand padding pour améliorer la visibilité */
+  background-color: #fff;
+  color: #000000;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  text-align: center; /* Assure que le texte est centré */
+}
+
+.round-button:hover {
+  background-color: #1d6fa5;
+  transform: scale(1.1);
+}
+
+.round-button:active {
+  transform: scale(0.95);
+}
+
+.round-button {
+  font-size: 10px;
+  position: absolute; /* Permet de positionner les boutons où vous voulez */
+  top: 20px; /* Ajustez selon la hauteur désirée */
+  right: 20px; /* Aligne les boutons à droite */
+}

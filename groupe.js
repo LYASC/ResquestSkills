@@ -1,68 +1,116 @@
-const participants = [];
+// Tableaux pour stocker les participants et leurs rôles
+let participants = [];
 
-// Ajouter un participant
-document.getElementById("add-participant").addEventListener("click", () => {
+// Fonction pour ajouter un participant
+document
+  .getElementById("add-participant")
+  .addEventListener("click", function () {
     const name = document.getElementById("name").value.trim();
     const role = document.getElementById("role").value;
 
-    if (!name) {
-        alert("Veuillez entrer un nom !");
-        return;
+    if (name && role) {
+      participants.push({ name, role });
+      displayParticipants();
+      document.getElementById("name").value = ""; // Réinitialiser le champ du nom
+    } else {
+      alert("Veuillez remplir tous les champs.");
     }
+  });
 
-    participants.push({ name, role });
-    updateParticipantList();
-    document.getElementById("name").value = ""; // Réinitialiser le champ nom
-});
+// Fonction pour afficher les participants dans la liste
+function displayParticipants() {
+  const list = document.getElementById("participant-list");
+  list.innerHTML = ""; // Réinitialiser la liste
 
-// Mettre à jour la liste des participants affichée
-function updateParticipantList() {
-    const list = document.getElementById("participant-list");
-    list.innerHTML = "";
-    participants.forEach((participant, index) => {
-        const li = document.createElement("li");
-        li.textContent = `${participant.name} (${participant.role})`;
-        list.appendChild(li);
-    });
+  participants.forEach(function (participant) {
+    const li = document.createElement("li");
+    li.textContent = `${participant.name} - ${getRoleName(participant.role)}`;
+    list.appendChild(li);
+  });
 }
 
-// Générer les groupes de manière aléatoire
-document.getElementById("generate-groups").addEventListener("click", () => {
-    if (participants.length < 2) {
-        alert("Ajoutez au moins 2 participants pour créer des groupes !");
-        return;
+// Fonction pour obtenir le nom du rôle à partir de la lettre
+function getRoleName(role) {
+  const roles = {
+    A: "Écoute",
+    B: "Communication",
+    C: "Observation",
+    D: "Prise de décision",
+    E: "Créativité",
+  };
+  return roles[role] || "Inconnu";
+}
+
+// Fonction pour générer les groupes
+document
+  .getElementById("generate-groups")
+  .addEventListener("click", function () {
+    if (participants.length < 4) {
+      alert("Il faut au moins 4 participants pour générer des groupes.");
+      return;
     }
 
-    // Mélanger les participants de manière aléatoire
-    const shuffled = participants.sort(() => Math.random() - 0.5);
-
-    // Créer des groupes
-    const groups = [];
-    for (let i = 0; i < shuffled.length; i += 2) {
-        const group = shuffled.slice(i, i + 2);
-        groups.push(group);
+    if (participants.length % 2 !== 0) {
+      alert(
+        "Le nombre de participants doit être pair pour générer les groupes."
+      );
+      return;
     }
 
-    // Afficher les groupes
+    const groups = createTwoGroups(participants);
     displayGroups(groups);
-});
+  });
 
-// Afficher les groupes générés
+// Fonction pour créer deux groupes équilibrés
+function createTwoGroups(participants) {
+  // Mélanger les participants pour garantir des groupes équilibrés
+  const shuffledParticipants = shuffleArray(participants);
+
+  // Diviser les participants en deux groupes
+  const midIndex = Math.floor(shuffledParticipants.length / 2);
+  const group1 = shuffledParticipants.slice(0, midIndex);
+  const group2 = shuffledParticipants.slice(midIndex);
+
+  return [group1, group2];
+}
+
+// Fonction pour mélanger un tableau (pour une distribution aléatoire)
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // Échanger les éléments
+  }
+  return array;
+}
+
+// Fonction pour afficher les groupes générés
 function displayGroups(groups) {
-    const groupsContainer = document.getElementById("groups");
-    groupsContainer.innerHTML = ""; // Réinitialiser l'affichage
+  const groupsContainer = document.getElementById("groups");
+  groupsContainer.innerHTML = ""; // Réinitialiser l'affichage des groupes
 
-    groups.forEach((group, index) => {
-        const groupDiv = document.createElement("div");
-        groupDiv.innerHTML = `<h3>Groupe ${index + 1}</h3>`;
-        groupDiv.innerHTML += group
-            .map(member => `<p>${member.name} (${member.role})</p>`)
-            .join("");
-        groupDiv.style.marginBottom = "20px";
-        groupDiv.style.padding = "10px";
-        groupDiv.style.border = "1px solid #ddd";
-        groupDiv.style.borderRadius = "5px";
-        groupDiv.style.backgroundColor = "#f9f9f9";
-        groupsContainer.appendChild(groupDiv);
+  groups.forEach(function (group, index) {
+    const groupDiv = document.createElement("div");
+    const groupTitle = document.createElement("h3");
+    groupTitle.textContent = `Groupe ${index + 1}`;
+    groupDiv.appendChild(groupTitle);
+
+    const list = document.createElement("ul");
+    group.forEach(function (participant) {
+      const li = document.createElement("li");
+      li.textContent = `${participant.name} - ${getRoleName(participant.role)}`;
+      list.appendChild(li);
     });
+
+    groupDiv.appendChild(list);
+    groupsContainer.appendChild(groupDiv);
+  });
+}
+function goToHome() {
+  // Redirige vers la page d'accueil
+  window.location.href = "principale.html"; // Remplacez par le chemin de votre page d'accueil
+}
+
+function goToTeamPage() {
+  // Redirige vers la page de création des équipes
+  window.location.href = "index.html"; // Remplacez par le chemin de votre page de création d'équipes
 }

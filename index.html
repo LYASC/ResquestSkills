@@ -3,10 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Questionnaire pas à pas</title>
+    <title>Quiz</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="navigation-buttons">
+      <button id="home-button" class="round-button" onclick="goToHome()">
+        Home
+      </button>
+      <button id="team-button" class="round-button" onclick="goToTeamPage()">
+        Team
+      </button>
+    </div>
     <img class="title" src="Mascottes/title.png" alt="nom du jeu" />
 
     <h1>Discover your collaboration profile</h1>
@@ -166,7 +174,10 @@
       </div>
     </div>
 
-    <button id="next-button">Suivant</button>
+    <button id="next-button">Next</button>
+    <button id="previous-button" style="display: none">previous</button>
+    <button id="submit-button" style="display: none">See results</button>
+
     <p id="results" class="results"></p>
 
     <script src="script.js"></script>

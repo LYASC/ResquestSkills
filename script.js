@@ -1,8 +1,12 @@
 // Variables pour les questions et les résultats
 const questions = document.querySelectorAll(".question");
 const nextButton = document.getElementById("next-button");
+const previousButton = document.getElementById("previous-button");
+const resultsButton = document.getElementById("submit-button");
 const resultsContainer = document.getElementById("results");
 let currentQuestionIndex = 0;
+
+// Stocker les réponses
 let answers = {
   A: 0,
   B: 0,
@@ -11,22 +15,18 @@ let answers = {
   E: 0,
 };
 
-// Afficher la question suivante
-function showNextQuestion() {
-  // Cacher la question actuelle
-  questions[currentQuestionIndex].classList.remove("active");
+// Afficher la question actuelle
+function showCurrentQuestion() {
+  // Masquer toutes les questions
+  questions.forEach((question, index) => {
+    question.classList.remove("active");
+    if (index === currentQuestionIndex) {
+      question.classList.add("active");
+    }
+  });
 
-  // Incrémenter l'index de la question
-  currentQuestionIndex++;
-
-  // Si toutes les questions ont été répondues, afficher les résultats
-  if (currentQuestionIndex === questions.length) {
-    showResults();
-    return;
-  }
-
-  // Afficher la nouvelle question
-  questions[currentQuestionIndex].classList.add("active");
+  // Mettre à jour la visibilité des boutons
+  updateButtonVisibility();
 }
 
 // Calculer et afficher les résultats
@@ -57,25 +57,61 @@ function showResults() {
       resultText =
         "Majority of E : Creativity <br> <br> You have new ideas and think outside the box. <br> <br> Your creativity inspires others and brings fresh solutions.";
   }
-
   // Afficher les résultats
   resultsContainer.innerHTML = resultText;
   nextButton.style.display = "none";
 }
 
-// Fonction pour gérer les choix
+// Mettre à jour la visibilité des boutons
+function updateButtonVisibility() {
+  previousButton.style.display =
+    currentQuestionIndex === 0 ? "none" : "inline-block";
+  nextButton.style.display =
+    currentQuestionIndex === questions.length - 1 ? "none" : "inline-block";
+  resultsButton.style.display =
+    currentQuestionIndex === questions.length - 1 ? "inline-block" : "none";
+}
+
+// Gestionnaire d'événement pour le bouton "Suivant"
 nextButton.addEventListener("click", () => {
-  // Vérifier que la question actuelle a bien une réponse sélectionnée
-  let selectedAnswer = document.querySelector(
+  const selectedAnswer = document.querySelector(
     `input[name="q${currentQuestionIndex + 1}"]:checked`
   );
+
   if (selectedAnswer) {
+    // Enregistrer la réponse
     answers[selectedAnswer.value]++;
-    showNextQuestion();
+
+    // Passer à la question suivante
+    currentQuestionIndex++;
+    showCurrentQuestion();
   } else {
     alert("Veuillez répondre à cette question avant de passer à la suivante.");
   }
 });
 
-// Afficher la première question
-showNextQuestion();
+// Gestionnaire d'événement pour le bouton "Précédent"
+previousButton.addEventListener("click", () => {
+  if (currentQuestionIndex > 0) {
+    currentQuestionIndex--;
+    showCurrentQuestion();
+  }
+});
+
+// Gestionnaire d'événement pour le bouton "Voir les résultats"
+resultsButton.addEventListener("click", () => {
+  showResults();
+});
+
+// Initialisation
+showCurrentQuestion();
+
+function goToHome() {
+  // Redirige vers la page d'accueil
+  window.location.href = "principale.html"; // Remplacez par le chemin de votre page d'accueil
+}
+
+function goToTeamPage() {
+  // Redirige vers la page de création des équipes
+  window.location.href = "groupe.html"; // Remplacez par le chemin de votre page de création d'équipes
+}
